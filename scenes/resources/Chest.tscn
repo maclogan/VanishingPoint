@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc2rgv8li6q5u"]
+
+[ext_resource type="Texture2D" uid="uid://2hp0asbh8ih4" path="res://assets/fantasy_ [version 2.0]/forest_/forest_ [resources].png" id="1_dv72f"]
+[ext_resource type="PackedScene" uid="uid://cuf6iicw111pt" path="res://scenes/HealthComponent.tscn" id="2_8bsig"]
+[ext_resource type="PackedScene" uid="uid://dj4apjyi4qmkr" path="res://scenes/HitboxComponent.tscn" id="3_6ifws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3kuf"]
+size = Vector2(12, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3a4t"]
+size = Vector2(12, 6)
+
+[node name="Chest" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dv72f")
+region_enabled = true
+region_rect = Rect2(18, 95, 12, 13)
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_8bsig")]
+MAX_HEALTH = 5
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_6ifws")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_b3kuf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_o3a4t")

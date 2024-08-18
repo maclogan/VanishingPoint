@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnhruxav3ru1"]
+
+[ext_resource type="PackedScene" uid="uid://cuf6iicw111pt" path="res://scenes/HealthComponent.tscn" id="1_6dywu"]
+[ext_resource type="PackedScene" uid="uid://dj4apjyi4qmkr" path="res://scenes/HitboxComponent.tscn" id="2_8q36q"]
+[ext_resource type="Texture2D" uid="uid://2hp0asbh8ih4" path="res://assets/fantasy_ [version 2.0]/forest_/forest_ [resources].png" id="3_iolj8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6k7b"]
+size = Vector2(10, 11)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tsbng"]
+radius = 3.0
+height = 12.0
+
+[node name="Rock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("3_iolj8")
+region_enabled = true
+region_rect = Rect2(66, 49, 12, 12)
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_6dywu")]
+MAX_HEALTH = 20
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_8q36q")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_b6k7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tsbng")

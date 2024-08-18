@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://byyajke5pxk5j"]
+[gd_scene load_steps=33 format=3 uid="uid://byyajke5pxk5j"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_xwrmu"]
 [ext_resource type="Script" path="res://addons/gaea/generators/2D/noise_generator/noise_generator.gd" id="2_dwpcs"]
@@ -28,12 +28,6 @@ frequency = 0.3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0kadx"]
 noise = SubResource("FastNoiseLite_h2xeu")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jafct"]
-frequency = 0.05
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o3xq5"]
-noise = SubResource("FastNoiseLite_jafct")
 
 [sub_resource type="Image" id="Image_on1x8"]
 data = {
@@ -756,7 +750,6 @@ y_sort_enabled = true
 script = ExtResource("1_xwrmu")
 noise_tree_texture = SubResource("NoiseTexture2D_8tjha")
 noise_rock_texture = SubResource("NoiseTexture2D_0kadx")
-noise_chest_texture = SubResource("NoiseTexture2D_o3xq5")
 
 [node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
 script = ExtResource("2_e02mo")
